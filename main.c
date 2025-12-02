@@ -276,15 +276,19 @@ void deplacer(char touche, t_Plateau plateau, int x, int y, int *adrCompteur){
 void detection_sokoban(t_Plateau plateau, int *AdrX, int *AdrY){
     int x, y;
     bool trouve = false;
-    for (x = 0; x < TAILLE; x++){
-        for (y = 0; y < TAILLE; y++){
+    x = 0;
+    while (x < TAILLE && trouve == false){
+        y = 0;
+        while (y < TAILLE && trouve == false){
             if (plateau[x][y] == SOKOBAN[0] || plateau[x][y] == SOKOBAN_SUR_CIBLE[0]){
                 trouve = true;
-                break;
+            }
+            else{
+                y++;
             }
         }
-        if (trouve){
-            break;
+        if(trouve == false){
+            x++;
         }
     }
     if (trouve){
